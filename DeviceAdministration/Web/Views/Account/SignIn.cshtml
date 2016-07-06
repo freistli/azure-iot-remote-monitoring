@@ -1,0 +1,95 @@
+﻿@using Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.Helpers
+@using GlobalResources
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="~/Content/favicon.ico" type="image/x-icon" />
+    <title>@Strings.IoTDevicePortalSignIn</title>
+    @Styles.Render("~/Content/css")
+
+    <script src="~/Scripts/jquery-1.11.2.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $("#NameOfTheDivToChange").css(
+                {
+                    "background-image": "url('http://www.bing.com/az/hprichbg/rb/QuaiBranlyMuseum_ZH-CN10941225231_1366x768.jpg')",
+                    "background-repeat":"no-repeat",
+                    "background-position":"center center",
+                    "background-attachment":"fixed",
+                    "-webkit-background-size":"cover",
+                    "-moz-background-size":"cover",
+                    "-o-background-size":"cover",
+                    "background-size":"cover"}
+                    ); 
+            $("#NameOfTheDivToChange").css("background-size", "75%");
+              
+            //Get
+            var p = $("#divcenter");
+
+            var offset = p.offset();
+
+            //set
+            $(".button_base").offset({ top: offset.top, left: offset.left });
+            $(".button_base").css({ "width": "90px", "height": "45px" ,"font-size": "30px"});
+        }
+        );
+    </script>
+</head>
+<body id="NameOfTheDivToChange" >
+
+    <header class="header_page">
+        <h1 class="header_page__head">@Strings.MicrosoftAzureIoTSuite</h1>
+        <a target="_blank" href="@Strings.InfoIconLink">
+            <img class="header_page__infoLinkImg" src="~/Content/img/icon_info_white.svg" alt="@Strings.Information" id="infoLinkImg" />
+        </a>
+        <!--@HeaderHelper.GetHeaderTitle()-->
+        <h2 class="header_page__solution_name">
+            Eyes On Air
+        </h2>
+
+    </header>
+
+    <section class="sign_in_page">
+
+        <main>
+
+            <noscript>
+                <div class="error_noscript">
+                    <h1 class="error_noscript__header">@Strings.NoscriptHeader</h1>
+                    <p>@Strings.NoscriptP1</p>
+                    <p>@Strings.NoscriptP2</p>
+                </div>
+            </noscript>
+
+            @*<div class="content_outer">
+                <div class="content_inner content_inner_with_messages">
+
+                    <p class="content_inner_with_messages__mesage_text">
+                        @Strings.YouMustBeSignedIn
+                    </p>
+
+                    <p class="content_inner_with_messages__mesage_text">
+                        @Strings.YourSessionMayHaveExpired
+                    </p>
+
+                </div>
+
+                @Html.ActionLink(@Strings.SignIn, "Index", "Dashboard", null, new { @class = "button_base button" })
+
+            </div>*@
+            <div id="divcenter" style="margin:10%"></div>
+            @Html.ActionLink(@Strings.SignIn, "Index", "Dashboard", null, new { @class = "button_base button" })
+
+        </main>
+    </section>
+
+</body>
+</html>
