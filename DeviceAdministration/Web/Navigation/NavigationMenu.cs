@@ -51,18 +51,26 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
                     Class = "navigation__link--actions",
                     MinimumPermission = Permission.ViewActions,
                 },
+                //new NavigationMenuItem
+                //{
+                //    Text = Strings.NavigationMenuItemsAdvanced,
+                //    Action = "CellularConn",
+                //    Controller = "Advanced",
+                //    Selected = false,
+                //    Class = "nav_advanced",
+                //},
                 new NavigationMenuItem
                 {
-                    Text = Strings.NavigationMenuItemsAdvanced,
-                    Action = "CellularConn",
-                    Controller = "Advanced",
+                    Text = "Data Analysis",
+                    Action = "ReportData",
+                    Controller = "PowerBI",
                     Selected = false,
-                    Class = "nav_advanced",
+                    Class = "nav_powerbi",
                 },
                 new NavigationMenuItem
                 {
-                    Text = Strings.NavigationMenuItemPowerBI,
-                    Action = "PowerBI",
+                    Text = "Geo Info",
+                    Action = "GeoData",
                     Controller = "PowerBI",
                     Selected = false,
                     Class = "nav_powerbi",

@@ -31,13 +31,12 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Infr
 
         public async Task<bool> ExecuteLogicAppAsync(string actionId, string deviceId, string measurementName, double measuredValue)
         {
-          //  Debug.WriteLine("ExecuteLogicAppAsync is not yet implemented");
-
-             
+          //now only for PowerOn and PowerOff             
                 
                 dynamic command = CommandHistorySchemaHelper.BuildNewCommandHistoryItem("Power");
                 dynamic parameters = new Dictionary<string,object>();
-                parameters.Add("Status",true);
+                bool flag = measuredValue < 1 ? false : true;
+                parameters.Add("Status", flag);
                 CommandHistorySchemaHelper.AddParameterCollectionToCommandHistoryItem(command, parameters);
                 
                 ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(ConfigurationManager.AppSettings["iotHub.ConnectionString"]);

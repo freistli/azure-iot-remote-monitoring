@@ -2249,7 +2249,7 @@ namespace GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PowerBI.
+        ///   Looks up a localized string similar to Power BI.
         /// </summary>
         public static string NavigationMenuItemPowerBI {
             get {

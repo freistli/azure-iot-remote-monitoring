@@ -117,7 +117,17 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.EventProcessor.W
                 this.IsReceivedMessageAfterClose = true;
             }
         }
+        private bool ExtractBool(dynamic value)
+        {
+            if (value == null)
+            {
+                Trace.TraceError("ActionProcessor: unable to parse null double value");
+                return false;
+            }
 
+            string valueAsString = value.ToString();
+            return bool.Parse(valueAsString);
+        }
         private async Task ProcessAction(dynamic eventData)
         {
             if (eventData == null)
@@ -160,8 +170,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.EventProcessor.W
                 if (ruleOutput.Equals("AlarmPowerOn", StringComparison.OrdinalIgnoreCase))
                 {
                     Trace.TraceInformation("ProcessAction: Power rule triggered!");
-                    double tempReading = ExtractDouble(eventData.reading);
-
+                    double tempReading = 1;
                     string tempActionId = await _actionMappingLogic.GetActionIdFromRuleOutputAsync(ruleOutput);
 
                    
@@ -183,7 +192,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.EventProcessor.W
                 if (ruleOutput.Equals("AlarmPowerOff", StringComparison.OrdinalIgnoreCase))
                 {
                     Trace.TraceInformation("ProcessAction: Power rule triggered!");
-                    double tempReading = ExtractDouble(eventData.reading);
+                    double tempReading = 0;
 
                     string tempActionId = await _actionMappingLogic.GetActionIdFromRuleOutputAsync(ruleOutput);
 
